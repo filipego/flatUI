@@ -30,6 +30,12 @@ body{
 	overflow: hidden;
 	@extend .clearfix;
 
+	[class^=col-] {
+		@media screen and (max-width: 768px){
+			margin-bottom: 0;
+		}
+	}
+
 	&.grid{
 
 		[class^=col-] {
@@ -37,6 +43,7 @@ body{
 		  background: #16a085;
 		  color: white;
 		  text-align: center;
+		  margin-bottom: 20px;
 		}
 	}
 

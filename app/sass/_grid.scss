@@ -82,6 +82,10 @@
       @extend .col;
       &{
         width: $i * $column_width - $gutter;
+
+        @media screen and (max-width: 768px){
+          width: 100%;
+        }
       }
     }
 
@@ -91,12 +95,20 @@
         @extend .relative;
         &{
           margin-left: $i * $column_width;
+
+          @media screen and (max-width: 768px){
+            margin-left: 0;
+          }
         }
       }
       .offset-right-#{$i} {
         @extend .relative;
         &{
           margin-right: $i * $column_width;
+
+          @media screen and (max-width: 768px){
+            margin-right: 0;
+          }
         }
       }
     }
