@@ -1,0 +1,105 @@
+// /* -----------------------------------------------------------------------------------------------------------*/
+// /* Config:                                                          */
+// /* -----------------------------------------------------------------------------------------------------------*/
+
+
+.container {
+  padding: 0 10px;
+}
+
+.row {
+  clear: both;
+  margin-left: -10px;
+  margin-right: -10px;
+
+  &:after,
+  &:before {
+    display: table;
+    clear: both;
+    content: "";
+    line-height: 0;
+    font-size: 0;   
+  }
+}
+
+@mixin grid_base(
+    $columns: 12,
+    $width: 100%,
+    $gutter: 0,
+    $prefix: true,
+    $push: true){   
+
+  $column_width: $width / $columns;
+
+
+// /* -----------------------------------------------------------------------------------------------------------*/
+// /* Basic:                                                           */
+// /* -----------------------------------------------------------------------------------------------------------*/
+
+  body {
+    min-width: $width;
+    margin: 0;
+  }
+
+  .col{
+    display: inline;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  .relative{
+    position:relative;
+  }
+
+  @include generate_grid(
+    $columns,
+    $width,
+    $gutter,
+    $prefix,
+    $push);
+  
+}
+
+// /* -----------------------------------------------------------------------------------------------------------*/
+// /* Loops:                                                           */
+// /* -----------------------------------------------------------------------------------------------------------*/
+
+@mixin generate_grid(
+    $columns: 12,
+    $width: 100%,
+    $gutter: 0,
+    $prefix: true,
+    $push: true){ 
+
+  $column_width: $width / $columns;
+
+  @for $i from 1 through $columns{
+    .col-#{$i} {
+      @extend .col;
+      &{
+        width: $i * $column_width - $gutter;
+      }
+    }
+
+    @if $push == true{
+      
+      .offset-left-#{$i} {
+        @extend .relative;
+        &{
+          margin-left: $i * $column_width;
+        }
+      }
+      .offset-right-#{$i} {
+        @extend .relative;
+        &{
+          margin-right: $i * $column_width;
+        }
+      }
+    }
+  }
+
+}
