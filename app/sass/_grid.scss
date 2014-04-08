@@ -48,7 +48,6 @@
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-bottom: 20px;
   }
 
   .relative{
@@ -95,20 +94,12 @@
         @extend .relative;
         &{
           margin-left: $i * $column_width;
-
-          @media screen and (max-width: 768px){
-            margin-left: 0;
-          }
         }
       }
       .offset-right-#{$i} {
         @extend .relative;
         &{
           margin-right: $i * $column_width;
-
-          @media screen and (max-width: 768px){
-            margin-right: 0;
-          }
         }
       }
     }
